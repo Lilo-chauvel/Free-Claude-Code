@@ -36,3 +36,28 @@ docker compose down
 ```
 
 Les valeurs réelles de `.env` ne doivent pas être versionnées ni partagées.
+
+## Choisir un modèle avec la complétion du shell
+
+Après avoir chargé l'environnement :
+
+```bash
+source ./claude-proxy-env.sh
+claude-model <TAB>
+```
+
+La touche `TAB` propose uniquement les modèles déclarés par `model_name` dans
+`litellm_config.yaml`, avec Bash ou Zsh. Après sélection :
+
+```bash
+claude
+```
+
+La fonction ne lance pas Claude Code. Elle met à jour le modèle utilisé par la
+prochaine commande `claude`. Si vous appelez la fonction sans argument, elle
+affiche la liste des modèles disponibles. Il est aussi possible de sélectionner
+directement un modèle :
+
+```bash
+claude-model nvidia/nemotron-3-super-120b-a12b
+```
