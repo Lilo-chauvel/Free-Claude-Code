@@ -1,0 +1,9 @@
+.env
+.git
+.venv
+__pycache__
+*.pyc
+*.log
+README.md
+claude-proxy-env.sh
+start-proxy.sh
