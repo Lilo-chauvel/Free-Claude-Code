@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Projet IA – Guide de démarrage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: #fafafa;
+      color: #222;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+    header, footer { text-align: center; }
+    h1 { font-size: 2.2rem; margin-top: 0; }
+    h2 { margin-top: 2rem; font-size: 1.6rem; }
+    p { margin: 1rem 0; }
+    pre {
+      background: #f0f0f0;
+      padding: 0.8rem;
+      overflow-x: auto;
+      border-radius: 4px;
+    }
+    code { font-family: monospace; }
+    a { color: #0366d6; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Projet IA – Guide de démarrage</h1>
+  </header>
+
+  <section>
+    <h2>Vue d’ensemble</h2>
+    <p>Ce dépôt offre une configuration Dockerisée pour <strong>LiteLLM</strong>, un proxy Open‑AI‑compatible, ainsi qu’une intégration avec <strong>Claude Code</strong>. Vous pourrez rapidement lancer un proxy, choisir un modèle et exécuter Claude depuis votre terminal.</p>
+  </section>
+
+  <section>
+    <h2>Configuration du proxy</h2>
+    <p>Copiez le fichier d’exemple et renseignez vos clés :</p>
+    <pre>cp .env.example .env
+# Remplir NVIDIA_API_KEY et LITELLM_MASTER_KEY dans .env</pre>
+  </section>
+
+  <section>
+    <h2>Lancer le proxy</h2>
+    <pre>./start-proxy.sh</pre>
+    <p>Le serveur écoute sur <code>127.0.0.1:4000</code> uniquement.</p>
+  </section>
+
+  <section>
+    <h2>Utiliser Claude Code</h2>
+    <p>Dans un terminal dédié, chargez le proxy, puis lancez Claude :</p>
+    <pre>source ./claude-proxy-env.sh
+claude</pre>
+  </section>
+
+  <section>
+    <h2>Gestion des modèles</h2>
+    <p>Les modèles se déclarent dans <code>litellm_config.yaml</code>. Vous pouvez les lister et choisir un modèle avec : </p>
+    <pre>claude-model          # liste
+claude-model <model_name>   # sélection
+</pre>
+    <p>La sélection modifie les variables <code>ANTHROPIC_MODEL</code> et ses variantes.<br>Le <code>model_name</code> doit être présent sur <code>litellm_config.yaml</code>.</p>
+  </section>
+
+  <section>
+    <h2>Arrêt du proxy</h2>
+    <pre>docker compose down</pre>
+  </section>
+
+  <footer>
+    <p>© 2026 Projet IA – <a href="https://github.com/your/repo">[Repository]</a></p>
+  </footer>
+</body>
+</html>
